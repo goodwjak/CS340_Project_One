@@ -187,7 +187,7 @@
                                         echo "<td> <input type='text' State=State </td>";
                                         echo "<td> <input type='text' Birthday=Birthday </td>";
                                         echo "<td> <input type='text' Salary=Salary </td>";
-                                        echo '<td> <input type="submit" value="Create"></td>';
+                                        echo '<td> <a href="createEmployee.php" class="btn btn-success pull-right">Add</a> </td>';
                                     echo '</form>';
                                     echo "</tr>";
                                     //loop through all rows.
@@ -201,7 +201,7 @@
                                         echo "<td>" . $row[4] . "</td>";
                                         echo "<td>" . $row[5] . "</td>";
                                         echo "<td>" . $row[6] . "</td>";
-                                        echo "<td> </td>"; 
+                                        echo '<td>  <a href="createEmployee.php" class="btn btn-success pull-right">DELETE</a> </td>'; 
                                         
                                     echo "</tr>";
                                     
