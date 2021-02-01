@@ -80,7 +80,7 @@ function updateEmployee() {
                     require_once "config.php";
 
                     //$sql = "SELECT Ssn,FirstName,LastName, Street, State, Salary, Birthday, 'Insert your function' as Level, SuperSsn, Dnum FROM EMPLOYEE";
-                    $sql = "SELECT Ssn, FirstName, LastName, Street, State, Birthday, Salary FROM EMPLOYEE;";
+                    $sql = "SELECT Ssn, FirstName, LastName, Street, State, Birthday, Salary FROM Employee;";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table id='Employees' class='table table-bordered table-striped'>";
