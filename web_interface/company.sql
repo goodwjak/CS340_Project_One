@@ -88,14 +88,7 @@ insert into Department values
 
 
 
-  FirstName,
-  LastName,
-  Ssn,  
-  BirthDate ,
-  Address ,
-  Salary ,
-  SuperSsn ,
-  Dnum,
+ 
 --we i init the tables
 insert into Employee values 
  ('John','Smith',123456789,'1965-01-09','731 Fondren, Houston TX',70000,333445555,5),
