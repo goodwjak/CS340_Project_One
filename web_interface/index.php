@@ -18,20 +18,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
 	<style type="text/css">
-        .wrapper{
-            width: 70%;
-            margin:0 auto;
-        }
-        .page-header h2{
-            margin-top: 0;
-        }
-        table tr td:last-child a{
-            margin-right: 15px;
-        }
+
     </style>
     
     
 <style>
+.wrapper{
+    width: 70%;
+    margin:0 auto;
+}
+.page-header h2{
+    margin-top: 0;
+}
+
 #Employees {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -54,7 +53,74 @@
   text-align: left;
   background-color: #2196f3;
   color: white;
-}
+  }
+  
+  .navMenu{
+  overflow:hidden;background-color:#2196f3
+  }
+  .navMenu a{
+  float:left;display:block;color:#f2f2f2;text-align:center;padding:14px 16px;text-decoration:none;font-size:17px
+  }
+  .navMenu a.active{
+  background-color:#25a186;color:#FFF
+  }
+  .navMenu .icon{display:none}.fa-bars:before{content:"\f0c9"}.navMenu .dropdown{float:left;overflow:hidden}
+  .navMenu .dropdown .dropbtn{
+    font-size:16px;
+    border:none;
+    outline:none;
+    color:#FFFFFF;
+    padding:14px 16px;
+    background-color:#2196f3;
+    font-family:inherit;
+    margin:0;
+    width:100%;
+    text-align:left
+    }
+    
+    .main_links{
+    background-color:#2196f3;
+    color:#FFFFFF;
+    line-height:1
+    }
+    
+    .main_links:hover{
+    background-color:#ffa726;
+    color:#FFFFFF
+    }
+    
+    .navMenu .navbar a:hover,.navMenu .dropdown:hover .dropbtn{
+    background-color:#ffa726;
+    color:#FFFFFF
+    }
+    
+    .navMenu .dropdown-content{
+    display:none;
+    position:absolute;
+    background-color:#000;
+    min-width:160px;
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index:1
+    }
+    
+    .navMenu .dropdown-content a{
+    float:none;
+    color:#FFF;
+    padding:12px 16px;
+    text-decoration:none;
+    display:block;
+    text-align:left;
+    background-color:#808040;
+    color:#000000
+    }
+    
+    .navMenu .dropdown-content a:hover{
+    background-color:#333;
+    color:#FFFFFF
+    }
+    
+    .navMenu .dropdown:hover .dropdown-content{display:block}@media screen and (max-width: 768px){.navMenu a:not(:first-child){display:none}.navMenu .dropdown{display:none}.navMenu a.icon{float:right;display:block}.navMenu.mobileView{position:relative}.navMenu.mobileView .icon{position:absolute;right:0;top:0}.navMenu.mobileView a{float:none;display:block;text-align:left}.navMenu.mobileView .dropdown{float:none;display:block;text-align:left}.navMenu .dropdown-content{position:relative}}
+  
 </style>
 <!--
     <script type="text/javascript">
@@ -70,6 +136,16 @@
         require_once "config.php";
 //		include "header.php";
 	?>
+
+	
+<div class='navMenu' id='navMenuId'>
+<a href='index.php' class='main_links'>Employees</a>
+<a href='departments.php' class='main_links'>Departments</a>
+<a href='projects.php' class='main_links'>Projects</a>
+<a href='pay.php' class='main_links'>Pay</a>
+<a class='icon' href='javascript:void(0)' onclick='openMenu()'>&#9776</a>
+</div>
+	
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
