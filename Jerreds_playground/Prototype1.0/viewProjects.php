@@ -49,7 +49,7 @@ if(isset($_GET["Ssn"]) && !empty(trim($_GET["Ssn"]))){
 if(isset($_SESSION["Ssn"]) ){
 	
     // Prepare a select statement
-    $sql = "SELECT P.Pname, P.Pnum, WO.Hours, WO.Essn FROM PROJECT P, WorksOn WO WHERE WO.Essn = ? AND WO.Pnum = P.Pnum";
+    $sql = "SELECT P.Pname, P.Pnum, WO.Hours, WO.Essn FROM Project P, WorksOn WO WHERE WO.Essn = ? AND WO.Pnum = P.Pnum";
 
 	//$sql = "SELECT Essn, Pno, Hours From WORKS_ON WHERE Essn = ? ";   
     if($stmt = mysqli_prepare($link, $sql)){

@@ -55,56 +55,10 @@
                     // Include config file
                     require_once "config.php";
 
-                    //$sql = "SELECT Ssn,FirstName,LastName, Street, State, Salary, Birthday, 'Insert your function' as Level, SuperSsn, Dnum FROM EMPLOYEE";
-                    $sql = "SELECT Ssn, FirstName, LastName, Street, State, Birthday, Salary FROM EMPLOYEE;";
-                    if($result = mysqli_query($link, $sql)){
-                        if(mysqli_num_rows($result) > 0){
-                            echo "<table class='table table-bordered table-striped'>";
-                                echo "<thead>";
-                                    echo "<tr>";
-                                        echo "<th width=8%>Ssn</th>";
-                                        echo "<th width=10%>First Name</th>";
-                                        echo "<th width=10%>Last Name</th>";
-                                        echo "<th width=10%>Street </th>";
-                                        echo "<th width=10%>State </th>";
-										echo "<th width=10%>Birthday </th>";
-										echo "<th width = 5%>Salary</th>";
-                                        echo "<th width=10%>Action</th>";
-                                    echo "</tr>";
-                                    
-                                    //loop through all rows.
-                                    while($row = mysqli_fetch_row($result))
-                                    {
-                                    echo "<tr>";
-                                        echo "<td>" . $row[0] . "</td>";
-                                        echo "<td>" . $row[1] . "</td>";
-                                        echo "<td>" . $row[2] . "</td>";
-                                        echo "<td>" . $row[3] . "</td>";
-                                        echo "<td>" . $row[4] . "</td>";
-                                        echo "<td>" . $row[5] . "</td>";
-                                        echo "<td>" . $row[6] . "</td>";
-                                        echo "<td> </td>"; 
-                                        
-                                    echo "</tr>";
-                                    
-                                    }
-                                    
-                                echo "</thead>";
-                                echo "<tbody>";
-                                echo "</tbody>";                            
-                            echo "</table>";
-                            // Free result set
-                            mysqli_free_result($result);
-                        } else{
-                            echo "<p class='lead'><em>No records were found.</em></p>";
-                        }
-                    } else{
-                        echo "ERROR: Could not able to execute $sql. <br>" . mysqli_error($link);
-                    }
-					echo "<br> <h2> Department Stats </h2> <br>";
+                    
 					
                     // Select Department Stats
-					/*
+					
                     $sql2 = "SELECT * FROM DeptSTATS";
                     if($result2 = mysqli_query($link, $sql2)){
                         if(mysqli_num_rows($result2) > 0){

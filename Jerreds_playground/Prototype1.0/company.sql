@@ -1,5 +1,5 @@
 -- Company Database for project
-create table DEPARTMENT (
+create table Department (
   Dname varchar(20) not null,
   Dnum int(2) not null check (Dnum > 0 and Dnum < 41),  
   MgrSsn char(9) not null,    
@@ -7,7 +7,7 @@ create table DEPARTMENT (
   unique (Dname)
 )ENGINE = INNODB;
 
-create table EMPLOYEE (
+create table Employee (
   FirstName varchar(15) not null,
   LastName varchar(15) not null,
   Ssn char(9) not null,  
@@ -18,17 +18,17 @@ create table EMPLOYEE (
   Dnum int(2) not null,
   constraint Fullname UNIQUE(FirstName, LastName),  
   primary key (Ssn), 
-  foreign key (Dnum) references DEPARTMENT(Dnum)
+  foreign key (Dnum) references Department(Dnum)
 )ENGINE = INNODB;
 
-create table PROJECT (
+create table Project (
   Pname varchar(20) not null,
   Pnum int(4) not null,  
   Plocation varchar(20) not null,
   Dnum int(2) not null, 
   primary key (Pnum), 
   unique (Pname), 
-  foreign key (Dnum) references DEPARTMENT(Dnum)
+  foreign key (Dnum) references Department(Dnum)
 )ENGINE = INNODB; 
 
 create table WorksON (
@@ -37,8 +37,8 @@ create table WorksON (
   Hours decimal(3,1),
   Projects decimal(4) not null,  
   primary key (Essn, Pnum), 
-  foreign key (Essn) references EMPLOYEE(Ssn),
-  foreign key (Pnum) references PROJECT(Pnum),
+  foreign key (Essn) references Employee(Ssn),
+  foreign key (Pnum) references Project(Pnum),
 )ENGINE = INNODB;
 
 create table Pay(
@@ -46,19 +46,19 @@ create table Pay(
   Dependents int(2) not null,
   Basepay decimal(10,2),
   ProjectPay decimal(10,2)
-  foreign key (Essn) references EMPLOYEE(Ssn)
+  foreign key (Essn) references Employee(Ssn)
 )ENGINE = INNODB; 
 --add address incase we want to check the dependents
 -- being claimed by more once by the same family
 --dFullname may solve this already
-create table DEPENDENT (
+create table Dependent (
   Essn char(9) not null,  
   DependentName varchar(15) not null,
   BirthDate date not null,
   Address varchar(30) not null,
   constraint DFullname UNIQUE(FirstName, LastName)
   primary key (Essn, DependentName),
-  foreign key (Essn) references EMPLOYEE(Ssn)
+  foreign key (Essn) references Employee(Ssn)
 )ENGINE = INNODB; 
 
 --added Dlocation incase we want to stop the projects being
@@ -67,7 +67,7 @@ create table DeptLOCATIONS (
   Dnum int(2) not null,
   Dlocation varchar(15) not null,
   primary key (Dnum, Dlocation), 
-  foreign key (Dnum) references DEPARTMENT(Dnum)
+  foreign key (Dnum) references Department(Dnum)
 )ENGINE = INNODB;
 
 
@@ -75,13 +75,29 @@ create table DeptLOCATIONS (
 --filling the tables brah
 
 -- we need nine entries for now
-insert into DEPARTMENT values 
- ('Research',5,333445555,'1988-05-22'),
- ('Administration',4,987654321,'1995-01-01'),
- ('Headquarters',1,888665555,'1981-06-19');
+insert into Department values 
+ ('BioEngineering',1,111111111),
+ ('Robotics',2,222222222),
+ ('ChemEngineering',3,333333333),
+ ('Human Resources',4,444444444),
+ ('Physics',5,555555555),
+ ('Geology',6,666666666),
+ ('ElecEngineering',7,777777777),
+ ('Administration',8,987654321),
+ ('Headquarters',9,123456789);
 
+
+
+  FirstName,
+  LastName,
+  Ssn,  
+  BirthDate ,
+  Address ,
+  Salary ,
+  SuperSsn ,
+  Dnum,
 --we i init the tables
-insert into EMPLOYEE values 
+insert into Employee values 
  ('John','Smith',123456789,'1965-01-09','731 Fondren, Houston TX',70000,333445555,5),
  ('Franklin','Wong',333445555,'1965-12-08','638 Voss, Houston TX',70000,888665555,5),
  ('Alicia','Zelaya',999887777,'1968-01-19','3321 Castle, Spring TX',70000,987654321,4),
@@ -91,7 +107,7 @@ insert into EMPLOYEE values
  ('Ahmad','Jabbar',987987987,'1969-03-29','980 Dallas, Houston TX',70000,987654321,4),
  ('James','Borg',888665555,'1937-11-10','450 Stone, Houston TX',70000,null,1);
 --projectName, Pnum, Location, Department
-insert into PROJECT values 
+insert into Project values 
  ('RoboticSnake',1,'Portland',1),
  ('RoboticArm',2,'Salem',2),
  ('ChemicalCentrafuge',3,'Corvallis',3),
@@ -118,7 +134,7 @@ insert into WorksOn values
  (987654321,2,15.0),
  (888665555,2,null);
 
-insert into DEPENDENT values 
+insert into Dependent values 
  (333445555,'Alice','1986-04-04','Child'),
  (333445555,'Theodore','1983-10-25','Child'),
  (333445555,'Joy','1958-05-03','Spouse'),
@@ -138,9 +154,9 @@ insert into DeptLOCATIONS values
  (8,'Mt.Hood'),
  (9,'SeaSide');
 
-alter table DEPARTMENT 
- add constraint depemp foreign key (MgrSsn) references EMPLOYEE(Ssn);
+alter table Department 
+ add constraint depemp foreign key (MgrSsn) references Employee(Ssn);
 
-alter table EMPLOYEE   
- add constraint empemp foreign key (SuperSsn) references EMPLOYEE(Ssn);
+alter table Employee   
+ add constraint empemp foreign key (SuperSsn) references Employee(Ssn);
 	

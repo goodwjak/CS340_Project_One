@@ -13,7 +13,7 @@ if(isset($_GET["Ssn"]) && !empty(trim($_GET["Ssn"]))){
 	$_SESSION["Ssn"] = $_GET["Ssn"];
 
     // Prepare a select statement
-    $sql1 = "SELECT * FROM EMPLOYEE WHERE Ssn = ?";
+    $sql1 = "SELECT * FROM Employee WHERE Ssn = ?";
   
     if($stmt1 = mysqli_prepare($link, $sql1)){
         // Bind variables to the prepared statement as parameters
@@ -82,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting into database
     if(empty($FirstNameErr) && empty($LastNameErr) && empty($AddressErr) && empty($SalaryErr) && empty($DnumErr)){
         // Prepare an update statement
-        $sql = "UPDATE EMPLOYEE SET FirstName=?, LastName=?, Address=?, Salary = ?, Dnum = ? WHERE Ssn=?";
+        $sql = "UPDATE Employee SET FirstName=?, LastName=?, Address=?, Salary = ?, Dnum = ? WHERE Ssn=?";
     
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -120,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$_SESSION["Ssn"] = $_GET["Ssn"];
 
 		// Prepare a select statement
-		$sql1 = "SELECT * FROM EMPLOYEE WHERE Ssn = ?";
+		$sql1 = "SELECT * FROM Employee WHERE Ssn = ?";
   
 		if($stmt1 = mysqli_prepare($link, $sql1)){
 			// Bind variables to the prepared statement as parameters

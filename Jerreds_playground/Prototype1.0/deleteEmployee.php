@@ -10,7 +10,7 @@
 		if(isset($_SESSION["Ssn"]) && !empty($_SESSION["Ssn"])){ 
 			$Ssn = $_SESSION['Ssn'];
 			// Prepare a delete statement
-			$sql = "DELETE FROM EMPLOYEE WHERE Ssn = ?";
+			$sql = "DELETE FROM Employee WHERE Ssn = ?";
    
 			if($stmt = mysqli_prepare($link, $sql)){
 			// Bind variables to the prepared statement as parameters
