@@ -73,7 +73,7 @@ function updateEmployee() {
 
 
 <div class="page-header clearfix">
-    <h2 class="pull-left">Employee Details</h2>
+    <h2 class="pull-left">Employees</h2>
 </div>
 
 
