@@ -260,23 +260,23 @@ caption {
     margin-top: 0;
 }
 
-#Employees {
+.page_table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   box-shadow: 5px 5px 10px;
   width: 100%;
 }
 
-#Employees td, #Employees th {
+.page_table td, .page_table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#Employees tr:nth-child(even){background-color: #f2f2f2;}
+.page_table tr:nth-child(even){background-color: #f2f2f2;}
 
-#Employees tr:hover {background-color: #ddd;}
+.page_table tr:hover {background-color: #ddd;}
 
-#Employees th {
+.page_table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;

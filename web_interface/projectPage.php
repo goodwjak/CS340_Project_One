@@ -37,7 +37,7 @@ require_once "config.php";
 </div>
 
 <div class="page-header clearfix">
-    <h2 class="pull-left">Employees</h2>
+    <h2 class="pull-left">Projects</h2>
 </div>
 
 <div class="TableDiv">
@@ -45,34 +45,24 @@ require_once "config.php";
     // Include config file
     require_once "config.php";
 
-    $sql = "SELECT Ssn, FirstName, LastName, Street, State, ZipCode, Birthday, Salary FROM EMPLOYEE;";
+    $sql = "SELECT Pnum, Plocation, Pname FROM Project;";
     if($result = mysqli_query($link, $sql)){
         if(mysqli_num_rows($result) > 0){
         echo "<table id='Employees' class='page_table table table-bordered table-striped'>";
             echo "<thead>";
             echo "<tr>";
-                echo "<th width=8%>Ssn</th>";
-                echo "<th width=10%>First Name</th>";
-                echo "<th width=10%>Last Name</th>";
-                echo "<th width=10%>Street </th>";
-                echo "<th width=10%>State </th>";
-                echo "<th width=5%>ZipCode</th>";
-                echo "<th width=5%>Birthday </th>";
-                echo "<th width=5%>Salary</th>";
-                echo "<th width=10%>Action</th>";
+                echo "<th width=20%>Pnum</th>";
+                echo "<th width=20%>Plocation</th>";
+                echo "<th width=20%>Pname</th>";
+                echo "<th width=20%>Action</th>";
             echo "</tr>";
                                     
         //Form section to toss data into creating a new record.
              echo "<tr>";
-                echo '<form method="POST" action="createEmployee.php">';
+                echo '<form method="POST" action="createProject.php">';
                 echo "<td> <input type='text' name=ssn > </input> </td>";
                 echo "<td> <input type='text' name=FirstName  </input> </td>";
                 echo "<td> <input type='text' name=LastName  </input> </td>";
-                echo "<td> <input type='text' name=Street  </input> </td>";
-                echo "<td> <input type='text' name=State  </input> </td>";
-                echo "<td> <input type='text' name=ZipCode </input> </td>";
-                echo "<td> <input type='text' name=Birthday  </input> </td>";
-                echo "<td> <input type='text' name=Salary  </input> </td>";
                 echo '<td> <input class="btn btn-success pull-right" type="submit"> </td>';
             echo '</form>';
             echo "</tr>";
@@ -84,11 +74,6 @@ require_once "config.php";
                 echo "<td> <input type='text' value=" . $row[0] . "></input></td>";
                 echo "<td> <input type='text' value=" . $row[1] . "></input> </td>";
                 echo "<td> <input type='text' value=" . $row[2] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[3] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[4] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[5] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[6] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[7] . "></input> </td>";
                 echo '<td>
                 <a href="createEmployee.php" class="btn btn-success pull-right">DELETE</a>
                 <a href="createEmployee.php" class="btn btn-success pull-right">UPDATE</a> 

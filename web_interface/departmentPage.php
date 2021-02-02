@@ -16,86 +16,70 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
-	<style type="text/css">
-        .wrapper{
-            width: 70%;
-            margin:0 auto;
-        }
-        .page-header h2{
-            margin-top: 0;
-        }
-        table tr td:last-child a{
-            margin-right: 15px;
-        }
-    </style>
-<!--
-    <script type="text/javascript">
-        $(document).ready(function(){ $('[data-toggle="tooltip"]').tooltip();});
-		 $('.selectpicker').selectpicker();
-    </script>
--->
+
+<link rel="stylesheet" href="index.css">
+
 </head>
 <body>
-    <?php
-        // Include config file
-        //Make sure to keep this file secert
-        require_once "config.php";
-//		include "header.php";
-	?>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header clearfix">
-                        <h2 class="pull-left">Employee Details</h2>
-                        <a href="createEmployee.php" class="btn btn-success pull-right">Add New Employee</a>
-                    </div>
-                    <?php
-                    // Include config file
-                    require_once "config.php";
 
-                    
-					
-                    // Select Department Stats
-					
-                    $sql2 = "SELECT * FROM DeptSTATS";
-                    if($result2 = mysqli_query($link, $sql2)){
-                        if(mysqli_num_rows($result2) > 0){
-                            echo "<div class='col-md-4'>";
-							echo "<table width=30% class='table table-bordered table-striped'>";
-                                echo "<thead>";
-                                    echo "<tr>";
-                                        echo "<th width=20%>Dnum</th>";
-                                        echo "<th width = 20%>Number of Employees</th>";
-                                        echo "<th width = 40%>Average Salary Basepay</th>";
-	
-                                echo "</thead>";
-                                echo "<tbody>";
-                                while($row = mysqli_fetch_array($result2)){
-                                    echo "<tr>";
-                                        echo "<td>" . $row['Dnum'] . "</td>";
-                                        echo "<td>" . $row['EmpCount'] . "</td>";
-                                        //Going to be used for basepay
-                                        echo "<td>" . $row['AvgSalary'] . "</td>";
-               
-                                    echo "</tr>";
-                                }
-                                echo "</tbody>";                            
-                            echo "</table>";
-                            // Free result set
-                            mysqli_free_result($result2);
-                        } else{
-                            echo "<p class='lead'><em>No records were found for Dept Stats.</em></p>";
-                        }
-                    } else{
-                        echo "ERROR: Could not able to execute $sql2. <br>" . mysqli_error($link);
-                    }
-					*/
-                    // Close connection
-                    mysqli_close($link);
-                    ?>
-                </div>
+<?php 
+// Include config file
+//Make sure to keep this file secert
+require_once "config.php";
+?>
+
+<div class='navMenu' id='navMenuId'>
+<a href='index.php' class='main_links'>Employees</a>
+<a href='departmentPage.php' class='main_links'>Departments</a>
+<a href='projectPage.php' class='main_links'>Projects</a>
+<a href='payPage.php' class='main_links'>Pay</a>
+<a class='icon' href='javascript:void(0)' onclick='openMenu()'>&#9776</a>
+</div>
+
+<div class="page-header clearfix">
+    <h2 class="pull-left">Departments</h2>
+</div>
+
+<div class="TableDiv">
+<?php
+    // Include config file
+    require_once "config.php";
+
+$sql = "SELECT Dnum, Dname, MgrSsn FROM Department";
+if($result2 = mysqli_query($link, $sql)){
+    if(mysqli_num_rows($result2) > 0){
+
+    //print table
+    echo "<table id='Department' class='page_table table table-bordered table-striped'>";
+    echo "<thead>";
+    
+        echo "<tr>";
+        echo "<th width=20%>Dnum</th>";
+        echo "<th width = 20%>Dname</th>";
+        echo "<th width = 40%>MgrSsn</th>";
+        echo "</tr>";
+
+    //echo "</thead>";
+    //loop through to populate table
+
+        while($row = mysqli_fetch_array($result2)){
+        echo "<tr>";
+        echo "<td>" . $row[0] ." </td>";
+        echo "<td>" . $row[1] ." </td>";
+        echo "<td>" . $row[2] ." </td>";
+        echo "</tr>";
+    }
+    echo "</thead>";
+    echo "</table></div>";
+    }
+        //echo "<p class='lead'><em>No records were found.</em></p>";
+    }
+    else{
+        echo "<p class='lead'><em>No records were found.</em></p>";
+    }
+    
+?>
 
 </body>
 </html>
+
