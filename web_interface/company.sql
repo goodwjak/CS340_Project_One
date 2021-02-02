@@ -38,32 +38,32 @@ create table WorksON (
   Projects decimal(4) not null,  
   primary key (Essn, Pnum), 
   foreign key (Essn) references Employee(Ssn),
-  foreign key (Pnum) references Project(Pnum),
+  foreign key (Pnum) references Project(Pnum)
 )ENGINE = INNODB;
 
 create table Pay(
   Essn char(9) not null,
   Dependents int(2) not null,
   Basepay decimal(10,2),
-  ProjectPay decimal(10,2)
+  ProjectPay decimal(10,2),
   foreign key (Essn) references Employee(Ssn)
 )ENGINE = INNODB; 
---add address incase we want to check the dependents
+-- add address incase we want to check the dependents
 -- being claimed by more once by the same family
---dFullname may solve this already
+-- dFullname may solve this already
 create table Dependent (
   Essn char(9) not null,  
   FirstName varchar(15) not null,
   LastName varchar(15) not null,
   BirthDate date not null,
   Address varchar(30) not null,
-  constraint DFullname UNIQUE(FirstName, LastName)
+  constraint DFullname UNIQUE(FirstName, LastName),
   primary key (Essn, FirstName, LastName),
   foreign key (Essn) references Employee(Ssn)
 )ENGINE = INNODB; 
 
---added Dlocation incase we want to stop the projects being
---too far apart to be asigned to a person
+-- added Dlocation incase we want to stop the projects being
+-- too far apart to be asigned to a person
 create table DeptLOCATIONS (
   Dnum int(2) not null,
   Dlocation varchar(15) not null,
@@ -88,7 +88,7 @@ insert into Department values
 
 
  -- FirstName,LastName,Ssn,BirthDate,Address,Salary,SuperSsn,Dnum,
---we  init the tables
+-- we  init the tables
 insert into Employee values 
 -- The Department Heads- They report to Admin
  ('Jack','Low',111111111,'1989-07-09','420 Record Way, Portland OR',75000,987654321,1),
@@ -99,9 +99,9 @@ insert into Employee values
  ('Bill','Crew',666666666,'1987-08-21','899 Younder Way, Newport OR',75000,987654321,6),
  ('Jill','Jackson',777777777,'1998-06-30','342 Goose St., Albany OR',75000,987654321,7),
  ('Zaya','Meta',987654321,'1998-06-30','980 UpHigh Road, Mt. Hood OR',75000,987654321,8),
- --Top BOSS
+ -- Top BOSS
  ('Jesse','Jesse',123456789,'1999-10-18','908 Water Ave., SeaSide OR',75000,987654321,9),
- --Regular Employees
+ -- Regular Employees
   ('Jane','Hill',123123123,'1978-04-30','888 Road Rd., Portland OR',60000,111111111,1),
   ('Bob','Apples',321321321,'1908-01-01',' 444 Street St., Salem OR',60000,222222222,2),
   ('Jackie','Wong',321123321,'1970-01-01','555 Parkway Prkwy., Corvallis OR',60000,333333333,3),
@@ -112,7 +112,7 @@ insert into Employee values
   ('Eric','Cire',678678678,'1999-11-30',' 455 Right Rd., Portland OR',60000,111111111,1);
 
 
---projectName, Pnum, Location, Department
+-- projectName, Pnum, Location, Department
 insert into Project values 
  ('RoboticSnake',1,'Portland',1),
  ('RoboticArm',2,'Salem',2),
@@ -125,7 +125,7 @@ insert into Project values
 
 
 -- Essn,Pnum,Hours, Projects,
---add more than one project to a person via webinterface
+-- add more than one project to a person via webinterface
 insert into WorksOn values 
  (123123123,1,32.5),
  (321321321,2,7.5),
