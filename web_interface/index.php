@@ -26,11 +26,6 @@
 -->
 </head>
 <body>
-    <?php
-
-//		include "header.php";
-	?>
-
 
 <?php 
 /*
@@ -154,6 +149,60 @@ function updateEmployee() {
             mysqli_close($link);
             ?>
 </div>
+	
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header clearfix">
+                        <h2 class="pull-left">Employee Details</h2>
+                        <!--
+                        <a href="createEmployee.php" class="btn btn-success pull-right">Add New Employee</a>
+                        -->
+                    </div>
+                    <?php
+                    // Include config file
+                    require_once "config.php";
+
+                    // Select Department Stats
+                    
+                    $sql = "SELECT * FROM DeptSTATS";
+                    if($result2 = mysqli_query($link, $sql)){
+                        if(mysqli_num_rows($result2) > 0){
+                            echo "<div class='col-md-4'>";
+                            echo "<table width=30% class='table table-bordered table-striped'>";
+                                echo "<thead>";
+                                    echo "<tr>";
+                                        echo "<th width=20%>Dnum</th>";
+                                        echo "<th width = 20%>Number of Employees</th>";
+                                        echo "<th width = 40%>Average Salary Basepay</th>";
+    
+                                echo "</thead>";
+                                echo "<tbody>";
+                                while($row = mysqli_fetch_array($result2)){
+                                    echo "<tr>";
+                                        echo "<td>" . $row['Dnum'] . "</td>";
+                                        echo "<td>" . $row['EmpCount'] . "</td>";
+                                        //Going to be used for basepay
+                                        echo "<td>" . $row['AvgSalary'] . "</td>";
+               
+                                    echo "</tr>";
+                                }
+                                echo "</tbody>";                            
+                            echo "</table>";
+                            // Free result set
+                            mysqli_free_result($result2);
+                        } else{
+                            echo "<p class='lead'><em>No records were found for Dept Stats.</em></p>";
+                        }
+                    } else{
+                        echo "ERROR: Could not able to execute $sql2. <br>" . mysqli_error($link);
+                    }
+                    
+                    // Close connection
+                    mysqli_close($link);
+                    ?>
+                </div>
 
 </body>
 </html>
