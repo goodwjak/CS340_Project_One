@@ -1,14 +1,3 @@
-<?php
-/*
-// Include config file
-require_once "config.php";
- 
-// Define variables and initialize with empty values
-$Ssn = $LastName = $FirstName = $Salery = $Birthday = $Street = $State = "";
-//Defining the errors too
-$SsnErr = $LastNameErr = $FirstNameErr = $StreetErr = $StateErr = $BirthdayErr $SalaryErr = "" ;
-*/
- ?>
  
  <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +14,11 @@ $SsnErr = $LastNameErr = $FirstNameErr = $StreetErr = $StateErr = $BirthdayErr $
     </style>
 </head>
 <body>
-    <p>Hello world</p>
+    <p>Employee record added:<br></p>
+    <?php 
+    echo "<p> NAME:" . $_POST["FirstName"] . "</p>";
+    ?>
+    
 </body>
 </html>
  

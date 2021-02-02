@@ -101,16 +101,16 @@ function updateEmployee() {
                                     
         //Form section to toss data into creating a new record.
              echo "<tr>";
-                echo '<form action="welcome.php" method="post">';
-                echo "<td> <input type='text' Ssn=ssn > </input> </td>";
-                echo "<td> <input type='text' firstName=firstName  </input> </td>";
-                echo "<td> <input type='text' lastName=lastName  </input> </td>";
-                echo "<td> <input type='text' Street=Street  </input> </td>";
-                echo "<td> <input type='text' State=State  </input> </td>";
-                echo "<td> <input type='text' ZipeCode=ZipCode </input> </td>";
-                echo "<td> <input type='text' Birthday=Birthday  </input> </td>";
-                echo "<td> <input type='text' Salary=Salary  </input> </td>";
-                echo '<td> <a href="createEmployee.php" class="btn btn-success pull-right">Add</a> </td>';
+                echo '<form method="POST" action="createEmployee.php">';
+                echo "<td> <input type='text' name=ssn > </input> </td>";
+                echo "<td> <input type='text' name=FirstName  </input> </td>";
+                echo "<td> <input type='text' name=LastName  </input> </td>";
+                echo "<td> <input type='text' name=Street  </input> </td>";
+                echo "<td> <input type='text' name=State  </input> </td>";
+                echo "<td> <input type='text' name=ZipCode </input> </td>";
+                echo "<td> <input type='text' name=Birthday  </input> </td>";
+                echo "<td> <input type='text' name=Salary  </input> </td>";
+                echo '<td> <input type="submit"> </td>';
             echo '</form>';
             echo "</tr>";
             //loop through all rows.
