@@ -8,3 +8,24 @@ todo list
 
 -add example data.
 -setup for assignment submission
+todo list
+
+-make function to create new employees
+-make function to validate the employee input.
+-make function to delete employees
+-make function to update employees
+-make pages for the other tables
+
+-add example data.
+-setup for assignment submission
+
+week 7:
+
+-Figure out what is due next.
+-Fix and get my local db working again. Can't have it fail like before.
+-Generate DB using the sql from project step 4
+-start figuring out how to set up the triggers for it.
+
+Write setup script or code too create db and entries.
+
+do the stuff I started to work on last time.
