@@ -26,6 +26,9 @@
 // Include config file
 //Make sure to keep this file secert
 require_once "config.php";
+include 'updateEmployee.php';
+include 'deleteEmployee.php';
+include 'createEmployee.php';
 ?>
 
 <div class='navMenu' id='navMenuId'>
@@ -91,7 +94,7 @@ require_once "config.php";
                 echo "<td> <input type='text' value=" . $row[7] . "></input> </td>";
                 echo '<td>
                 <a href="createEmployee.php" class="btn btn-success pull-right">DELETE</a>
-                <a href="createEmployee.php" class="btn btn-success pull-right">UPDATE</a> 
+                <a href="updateEmployee.php" class="btn btn-success pull-right">UPDATE</a> 
                 </td>'; 
             echo "</tr> </form>";
             }
