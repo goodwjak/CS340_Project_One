@@ -1,7 +1,9 @@
 <?php 
 include_once 'config.php';
 
-echo "<p>Adding EMPLOYEE</p>";
+//include something for the user to look at.
+include("loading_animation.html");
+
 echo "<script>console.log('Adding EMPLOYEE');</script>";
 
 //echo "<script>console.log('" . $_POST['Ssn'] . "');</script>";
@@ -32,5 +34,5 @@ if(isset($_POST['Ssn']))
 
 //here I need to have it send the client back to the previous page and load it.
 echo "<script>console.log('Script Done');</script>";
-header('Location: index.php');
+//header('Location: index.php');
 ?>
