@@ -8,6 +8,9 @@ FileName: updateEmployee.php
 
 include_once 'config.php';
 
+//include something for the user to look at.
+include("loading_animation.html");
+
 echo "<p>Modifing the employee</p>";
 echo "<script>console.log('Adding EMPLOYEE');</script>";
 

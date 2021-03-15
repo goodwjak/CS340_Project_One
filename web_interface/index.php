@@ -88,7 +88,8 @@ require_once "config.php";
             while($row = mysqli_fetch_row($result))
             {
             //The ID is set from the primary key of the employee which happens to be the Ssn
-            echo '<tr> <form id=' . $row[0] . 'action="updateEmployee.php" method="post">';
+            echo '<tr>';
+            echo ' <form method="post" action="updateEmployee.php">';
                 echo "<td> <input type='text'  name='Ssn' value=" . $row[0] . "></input></td>";
                 echo "<td> <input type='text'  name='FirstName' value=" . $row[1] . "></input> </td>";
                 echo "<td> <input type='text'  name='LastName' value=" . $row[2] . "></input> </td>";
@@ -98,10 +99,11 @@ require_once "config.php";
                 echo "<td> <input type='text'  name='Birthday' value=" . $row[6] . "></input> </td>";
                 echo "<td> <input type='text'  name='Salary' value=" . $row[7] . "></input> </td>";
                 echo '<td>
-                <input class="btn btn-success pull-right" type="submit" name="action" value="DELETE">
-                <input class="btn btn-success pull-right" type="submit" name="action" value="UPDATE">
+                <input class="btn btn-success pull-right" type="submit" name="action" value="DELETE"/>
+                <input class="btn btn-success pull-right" type="submit" name="action" value="UPDATE"/>
                 </td>'; 
-            echo "</tr> </form>";
+            echo "</form>";
+            echo "</tr>";
             }
             echo "</thead>";                           
             echo "</table>";
