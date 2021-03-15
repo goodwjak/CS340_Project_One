@@ -1,69 +1,35 @@
+<?php 
+include_once 'config.php';
 
+echo "<p>Adding EMPLOYEE</p>";
+echo "<script>console.log('Adding EMPLOYEE');</script>";
 
- 
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Record</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        .wrapper
-        {
-            width: 500px;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
-    <h1>Employee record added:<br></h1>
+//echo "<script>console.log('" . $_POST['Ssn'] . "');</script>";
 
-<?php
-require_once "config.php";
-//show that it's working.
-
-echo "<p> PHP GENTERATED </p>";
-//Validate the data for the entered data.
-
-//keep track if everything is valid or not.
-$valid_data = true;
-
-echo "<p>FirstName: " . strlen($_POST["FirstName"]) <= 50 . "</p>";
-
-//check the first name var.
-// if the string is not less than or equal to 50 and the name isn't greater than zero.
-if( (NOT (strlen($_POST["FirstName"]) <= 50)) OR ( strlen($_POST["FirstName"]) > 0))
-{
-//it's no longer valid.
-    $valid_data = false;
-    echo "<p> FIRSTNAME NOT VALID! <br> </p>";
+if(isset($_POST['Ssn']))
+{    
+     $Ssn = $_POST['Ssn'];
+     $FirstName = $_POST['FirstName'];
+     $LastName = $_POST['LastName'];
+     $Street = $_POST['Street'];
+     $State = $_POST['State'];
+     $ZipCode = $_POST['ZipCode'];
+     $Birthday = $_POST['Birthday'];
+     $Salary = $_POST['Salary'];
+     
+     $sql = "INSERT INTO EMPLOYEE (Ssn, FirstName, LastName, Street, State, ZipCode, Birthday, Salary) 
+     VALUES ('$Ssn', '$FirstName', '$LastName', '$Street', '$State', '$ZipCode', '$Birthday', '$Salary')";
+     
+     //$sql = "INSERT INTO EMPLOYEE (name,email,mobile) VALUES ('$name','$email','$mobile')";
+     if (mysqli_query($link, $sql)) {
+        echo "<script>console.log('Sucess adding employee.');</script>";
+     } else {
+        //echo "<p>Error: " . $sql . ":-" . mysqli_error($conn) . "</p>";
+        echo "<script>console.log('Error: " . $sql . ":-" . mysqli_error($link) . ");</script>";
+     }
+     //mysqli_close($conn);
 }
 
-//check the first name var.
-// if the string is not less than or equal to 50 and the name isn't greater than zero.
-if( (NOT (strlen($_POST["LastName"]) <= 50)) OR ( strlen($_POST["LastName"]) > 0))
-{
-//it's no longer valid.
-    $valid_data = false;
-    echo "<p> LASTNAME NOT VALID! <br> </p>";
-}
-
-echo "<p>LastName: " . $_POST["LastName"] . "</p>";
-
-//construct query from the input data.
-
-
-//submit the query and add employee to the DB
-
+echo "<script>console.log('Script Done');</script>";
+header('Location: index.php');
 ?>
-    
-</body>
-</html>
- 
- <?php
- 
-
-
-
-
-

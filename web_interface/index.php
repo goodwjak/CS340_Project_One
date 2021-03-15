@@ -13,6 +13,11 @@
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+-->
+    
+
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -26,9 +31,9 @@
 // Include config file
 //Make sure to keep this file secert
 require_once "config.php";
-include 'updateEmployee.php';
-include 'deleteEmployee.php';
-include 'createEmployee.php';
+//include 'updateEmployee.php';
+//include 'deleteEmployee.php';
+//include 'createEmployee.php';
 ?>
 
 <div class='navMenu' id='navMenuId'>
@@ -67,8 +72,8 @@ include 'createEmployee.php';
                                     
         //Form section to toss data into creating a new record.
              echo "<tr>";
-                echo '<form method="POST" action="createEmployee.php">';
-                echo "<td> <input type='text' name=ssn > </input> </td>";
+                echo '<form method="post" action="createEmployee.php">';
+                echo "<td> <input type='text' name=Ssn > </input> </td>";
                 echo "<td> <input type='text' name=FirstName  </input> </td>";
                 echo "<td> <input type='text' name=LastName  </input> </td>";
                 echo "<td> <input type='text' name=Street  </input> </td>";
@@ -83,15 +88,15 @@ include 'createEmployee.php';
             while($row = mysqli_fetch_row($result))
             {
             //The ID is set from the primary key of the employee which happens to be the Ssn
-            echo '<tr> <form id=' . $row[0] . 'action="updateEmployee.php" method="post">';
-                echo "<td> <input type='text' value=" . $row[0] . "></input></td>";
-                echo "<td> <input type='text' value=" . $row[1] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[2] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[3] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[4] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[5] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[6] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[7] . "></input> </td>";
+            echo '<tr> <form id=' . $row[0] . 'action="updateEmployee()" method="post">';
+                echo "<td> <input type='text'  name='Ssn' value=" . $row[0] . "></input></td>";
+                echo "<td> <input type='text'  name='FirstName' value=" . $row[1] . "></input> </td>";
+                echo "<td> <input type='text'  name='LastName' value=" . $row[2] . "></input> </td>";
+                echo "<td> <input type='text'  name='Street' value=" . $row[3] . "></input> </td>";
+                echo "<td> <input type='text'  name='State' value=" . $row[4] . "></input> </td>";
+                echo "<td> <input type='text'  name='ZipCode' value=" . $row[5] . "></input> </td>";
+                echo "<td> <input type='text'  name='Birthday' value=" . $row[6] . "></input> </td>";
+                echo "<td> <input type='text'  name='Salary' value=" . $row[7] . "></input> </td>";
                 echo '<td>
                 <a href="createEmployee.php" class="btn btn-success pull-right">DELETE</a>
                 <a href="updateEmployee.php" class="btn btn-success pull-right">UPDATE</a> 
