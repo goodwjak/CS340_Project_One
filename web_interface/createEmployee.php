@@ -30,6 +30,7 @@ if(isset($_POST['Ssn']))
      //mysqli_close($conn);
 }
 
+//here I need to have it send the client back to the previous page and load it.
 echo "<script>console.log('Script Done');</script>";
 header('Location: index.php');
 ?>
