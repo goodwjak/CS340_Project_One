@@ -52,22 +52,41 @@ if($result2 = mysqli_query($link, $sql)){
     //print table
     echo "<table id='Department' class='page_table table table-bordered table-striped'>";
     echo "<thead>";
-    
         echo "<tr>";
         echo "<th width=20%>Dnum</th>";
         echo "<th width = 20%>Dname</th>";
         echo "<th width = 40%>MgrSsn</th>";
+        echo "<th width = 20%>Action</th>";
         echo "</tr>";
-
+        
+    //Empty table for adding new departments.
+        echo '<form method="post" action="department_funcs.php">';
+        echo "<tr>";
+        echo "<td> <input type='text'  name='Dnum' > </td>";
+        echo "<td> <input type='text'  name='Dname' > </td>";
+        echo "<td> <input type='text'  name='MgrSsn'> </td>";
+        echo '<td>';
+            echo ' <input class="btn btn-success pull-right" type="submit" name="action" value="ADD">';
+        echo '</td>';
+        echo "</tr>";
+        echo '</form>';
+        
     //echo "</thead>";
     //loop through to populate table
 
         while($row = mysqli_fetch_array($result2)){
+        
+        echo '<form method="post" action="department_funcs.php">';
         echo "<tr>";
-        echo "<td>" . $row[0] ." </td>";
-        echo "<td>" . $row[1] ." </td>";
-        echo "<td>" . $row[2] ." </td>";
+        echo "<td> <input type='text'  name='Dnum' value='" . $row[0] ."'> </td>";
+        echo "<td> <input type='text'  name='Dname' value='" . $row[1] ."'> </td>";
+        echo "<td> <input type='text'  name='MgrSsn' value='" . $row[2] ."'> </td>";
+        echo '<td>';
+            echo ' <input class="btn btn-success pull-right" type="submit" name="action" value="DELETE">';
+            echo ' <input class="btn btn-success pull-right" type="submit" name="action" value="UPDATE">';
+        echo '</td>';
         echo "</tr>";
+        echo '</form>';
     }
     echo "</thead>";
     echo "</table></div>";
