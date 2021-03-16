@@ -11,7 +11,7 @@ include_once 'config.php';
 //include something for the user to look at.
 include("loading_animation.html");
 
-echo "<p>Modifing the employee</p>";
+//echo "<p>Modifing the employee</p>";
 echo "<script>console.log('Updating employee');</script>";
 
 //echo "<script>console.log('" . $_POST['Ssn'] . "');</script>";
@@ -32,8 +32,6 @@ echo "<script>console.log('Script Done');</script>";
 sleep(5);
 
 //goback to the main page
-//header('Location: index.php');
-
 
 /*
 #######################################
