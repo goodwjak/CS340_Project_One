@@ -67,7 +67,7 @@ function delete_department($link) {
         $Dnum = $_POST['Dnum'];
     
         //construct the sql.
-        $sql = 'DELETE FROM Department WHERE Dnum is ' . $Dnum . ';';
+        $sql = 'DELETE FROM Department WHERE Dnum = ' . $Dnum . ';';
         
         //send the sql.
         if (mysqli_query($link, $sql)) {
@@ -76,7 +76,7 @@ function delete_department($link) {
         } 
         else {
             //Tell the user there war a error.
-            echo "<script>console.log('Error: " . $sql . ":-" . mysqli_error($link) . ");</script>";
+            echo "<script>console.log('Error: " . mysqli_error($link) . "');</script>";
             
             //snap back
             echo '<script>alert("ERROR: Had trouble with the database!");</script>';
