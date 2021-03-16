@@ -57,7 +57,7 @@ Input: Post data.
 Output: data to the console and query to the database.
 Description: Deletes a department from the database.
 */
-function delete_department($link){
+function delete_department($link) {
     //log to console the function.
     echo "<script>console.log('calling: delete_department()');</script>";
 
@@ -107,11 +107,10 @@ function add_department($link){
         //get the key value.
         $Dnum = $_POST['Dnum'];
         $Dname = $_POST['Dname'];
-        $Dname = $_POST['MgrSsn'];
+        $MgrSsn = $_POST['MgrSsn'];
     
         //construct the sql.
-        $sql = 'INSERT INTO Department 
-        (Dnum, Dname, MgrSsn) VALUES (' . $Dnum . ', ' . $Dname . ', ' . $MgrSsn . ');';
+        $sql = "INSERT INTO Department (Dnum, Dname, MgrSsn) VALUES ('$Dnum ', '$Dname', '$MgrSsn')";
         
         //send the sql.
         if (mysqli_query($link, $sql)) {
@@ -154,11 +153,11 @@ function update_department($link){
         $MgrSsn = $_POST['MgrSsn'];
     
         //construct the sql.
-        $sql = 'UPDATE Department SET 
+        $sql = "UPDATE Department SET 
         Dnum = ' . $Dnum . ',
         Dname = ' . $Dname . ',
         MgrSsn = ' . $MgrSsn . '
-        WHERE Dnum is ' . $Dnum . ';';
+        WHERE Dnum is ' . $Dnum . '";
         
         //send the sql.
         if (mysqli_query($link, $sql)) {
