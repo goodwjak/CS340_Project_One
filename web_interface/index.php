@@ -22,7 +22,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
-<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="index.css?v=0.1">
 
 </head>
 <body>
@@ -31,9 +31,6 @@
 // Include config file
 //Make sure to keep this file secert
 require_once "config.php";
-//include 'updateEmployee.php';
-//include 'deleteEmployee.php';
-//include 'createEmployee.php';
 ?>
 
 <div class='navMenu' id='navMenuId'>
@@ -53,6 +50,9 @@ require_once "config.php";
     // Include config file
     require_once "config.php";
 
+    //Make sure we have access to the database
+    //echo "<script>console.log('" . $link . "');</script>";
+    
     $sql = "SELECT Ssn, FirstName, LastName, Street, State, ZipCode, Birthday, Salary FROM EMPLOYEE;";
     if($result = mysqli_query($link, $sql)){
         if(mysqli_num_rows($result) > 0){
@@ -72,7 +72,7 @@ require_once "config.php";
                                     
         //Form section to toss data into creating a new record.
              echo "<tr>";
-                echo '<form method="post" action="createEmployee.php">';
+                echo '<form method="post" action="updateEmployee.php">';
                 echo "<td> <input type='text' name=Ssn > </input> </td>";
                 echo "<td> <input type='text' name=FirstName  </input> </td>";
                 echo "<td> <input type='text' name=LastName  </input> </td>";
@@ -81,7 +81,7 @@ require_once "config.php";
                 echo "<td> <input type='text' name=ZipCode </input> </td>";
                 echo "<td> <input type='text' name=Birthday  </input> </td>";
                 echo "<td> <input type='text' name=Salary  </input> </td>";
-                echo '<td> <input class="btn btn-success pull-right" type="submit"> </td>';
+                echo '<td> <input class="btn btn-success pull-right" type="submit" name="action" value="ADD"> </td>';
             echo '</form>';
             echo "</tr>";
             //loop through all rows.

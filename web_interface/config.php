@@ -15,9 +15,11 @@ define('DB_NAME', 'CS340_testing');
 
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
- 
+
+
 // Check connection
 if($link === false){
+    echo "<script>console.log('Issue with link');</script>";
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 ?>
