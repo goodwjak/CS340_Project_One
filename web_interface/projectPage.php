@@ -59,25 +59,25 @@ require_once "config.php";
                                     
         //Form section to toss data into creating a new record.
              echo "<tr>";
-                echo '<form method="POST" action="createProject.php">';
-                echo "<td> <input type='text' name=ssn > </input> </td>";
-                echo "<td> <input type='text' name=FirstName  </input> </td>";
-                echo "<td> <input type='text' name=LastName  </input> </td>";
-                echo '<td> <input class="btn btn-success pull-right" type="submit"> </td>';
+                echo '<form method="POST" action="project_funcs.php">';
+                echo "<td> <input type='text' name=Pnum > </input> </td>";
+                echo "<td> <input type='text' name=Plocation  </input> </td>";
+                echo "<td> <input type='text' name=Pname  </input> </td>";
+                echo '<td> <input class="btn btn-success pull-right" type="submit" name="action" value="ADD"> </td>';
             echo '</form>';
             echo "</tr>";
             //loop through all rows.
             while($row = mysqli_fetch_row($result))
             {
             //The ID is set from the primary key of the employee which happens to be the Ssn
-            echo '<tr> <form id=' . $row[0] . 'action="updateEmployee.php" method="post">';
-                echo "<td> <input type='text' value=" . $row[0] . "></input></td>";
-                echo "<td> <input type='text' value=" . $row[1] . "></input> </td>";
-                echo "<td> <input type='text' value=" . $row[2] . "></input> </td>";
-                echo '<td>
-                <a href="createEmployee.php" class="btn btn-success pull-right">DELETE</a>
-                <a href="createEmployee.php" class="btn btn-success pull-right">UPDATE</a> 
-                </td>'; 
+            echo '<tr> <form action="project_funcs.php" method="post">';
+                echo "<td> <input type='text' name='Pnum' value='" . $row[0] . "'></input></td>";
+                echo "<td> <input type='text' name='Plocation' value='" . $row[1] . "'></input> </td>";
+                echo "<td> <input type='text' name='Pname' value='" . $row[2] . "'></input> </td>";
+                echo '<td>';
+                    echo ' <input class="btn btn-success pull-right" type="submit" name="action" value="DELETE">';
+                    echo ' <input class="btn btn-success pull-right" type="submit" name="action" value="UPDATE">';
+                echo '</td>';
             echo "</tr> </form>";
             }
             echo "</thead>";                           
