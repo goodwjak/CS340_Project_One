@@ -106,9 +106,12 @@ function add_department($link){
     if(isset($_POST['Dnum']) and strlen($_POST['Dnum']) >= 1) {
         //get the key value.
         $Dnum = $_POST['Dnum'];
+        $Dname = $_POST['Dname'];
+        $Dname = $_POST['MgrSsn'];
     
         //construct the sql.
-        $sql = 'DELETE FROM Department WHERE Dnum is ' . $Dnum . ';';
+        $sql = 'INSERT INTO Department 
+        (Dnum, Dname, MgrSsn) VALUES (' . $Dnum . ', ' . $Dname . ', ' . $MgrSsn . ');';
         
         //send the sql.
         if (mysqli_query($link, $sql)) {
@@ -147,9 +150,15 @@ function update_department($link){
     if(isset($_POST['Dnum']) and strlen($_POST['Dnum']) >= 1) {
         //get the key value.
         $Dnum = $_POST['Dnum'];
+        $Dname = $_POST['Dname'];
+        $MgrSsn = $_POST['MgrSsn'];
     
         //construct the sql.
-        $sql = 'DELETE FROM Department WHERE Dnum is ' . $Dnum . ';';
+        $sql = 'UPDATE Department SET 
+        Dnum = ' . $Dnum . ',
+        Dname = ' . $Dname . ',
+        MgrSsn = ' . $MgrSsn . '
+        WHERE Dnum is ' . $Dnum . ';';
         
         //send the sql.
         if (mysqli_query($link, $sql)) {
